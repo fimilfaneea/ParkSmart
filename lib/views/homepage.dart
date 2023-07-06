@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                       },false
                   );
                   /*Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));*/
-                }, child: const Text('Log Out',style: TextStyle(color: Colors.black),))
+                }, child: const Text('Log Out',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),))
           ],
         ),
         floatingActionButton: FloatingActionButton(
