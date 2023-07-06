@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                                 date: data['date'],
                                               )));
                                             },
-                                          ),
+                                            child: Text("Edit",style: TextStyle(color: Colors.tealAccent,fontSize: 16,fontWeight: FontWeight.bold),)),
                                         InkWell(
                                           onTap: (){
                                             _showMyDialog(
