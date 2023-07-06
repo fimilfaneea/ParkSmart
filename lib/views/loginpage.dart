@@ -71,6 +71,9 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Image.asset(
                     "assets/Images/logo3.png",
+                    width: 300,
+                    opacity: const AlwaysStoppedAnimation(.8) ,
+                   // color: Color.fromARGB(31, 62, 36, 128),
                     fit: BoxFit.cover,
                   ),
                   SizedBox(
