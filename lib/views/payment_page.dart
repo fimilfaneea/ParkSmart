@@ -134,29 +134,6 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                 ),
               ),
-               SizedBox(
-                width: double.infinity,
-                child: Card(
-                  color: Color(0xFFA6E9B5),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Cancellation Available",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                        Text("This venue supports booking cancellation.")
-                      ],
-                    ),
-                  ),
-                ),
-              ),
                Card(
                 child: Padding(
                   padding: EdgeInsets.all(10.0),
