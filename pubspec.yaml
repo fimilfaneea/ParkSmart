@@ -34,6 +34,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/Images/logo3.png
+    - assets/Images/hpb2.jpg
+    - assets/Images/hpb1.png
+    - assets/Images/logo3.png
     - assets/car_loading.json
     - assets/park.json
     - assets/gpay.json

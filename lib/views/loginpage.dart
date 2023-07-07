@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                    // color: Color.fromARGB(31, 62, 36, 128),
                     fit: BoxFit.cover,
                   ),
-                  SizedBox(
+               const   SizedBox(
                     height: 10.0,
                   ),
                   Container(
