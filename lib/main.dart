@@ -1,4 +1,5 @@
 import 'package:parksmart/views/loginpage.dart';
+import 'package:parksmart/views/payment_page.dart';
 import 'package:parksmart/views/signuppage.dart';
 import 'package:parksmart/widgets/theme.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       
       routes: {
        "home": (context) => const HomePage(),
+       "pay": (context) => const PaymentPage(),
       },
     );
   }

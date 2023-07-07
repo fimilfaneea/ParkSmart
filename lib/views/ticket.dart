@@ -41,7 +41,7 @@ class _AddState extends State<Add> {
   TextEditingController license = TextEditingController();
   TextEditingController number = TextEditingController();
   TextEditingController dateofJourney = TextEditingController();
-  //AuthController authController = Get.put(AuthController());
+  AuthController authController = Get.put(AuthController());
 
 
 //list for malls
@@ -368,9 +368,9 @@ class _AddState extends State<Add> {
                           child: changebutton
                               ? Icon(Icons.done)
                               : Text(
-                            widget.id == null ? "Submit" : "Update",
+                            widget.id == null ? "Pay" : "Update",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18),
                           ),
@@ -408,7 +408,8 @@ class _AddState extends State<Add> {
           }).whenComplete(() {
             Get.snackbar("Parking reserved", "Successful",
                 snackPosition: SnackPosition.BOTTOM);
-            Navigator.of(context).pop();
+                Navigator.of(context).pushNamed('pay');
+            //Navigator.of(context).pop();
           });
         } 
         setState(() {

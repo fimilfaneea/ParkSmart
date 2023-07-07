@@ -13,6 +13,7 @@ dependencies:
   firebase_core: ^2.14.0
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
   get: ^4.6.5
   lottie: ^2.3.2
   pay: ^1.1.1
@@ -24,8 +25,16 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+
+flutter_icons: 
+  image_path:  assets\Images\logo3.png
+  android: true
+
 flutter:
   uses-material-design: true
   assets:
     - assets/Images/logo3.png
+    - assets/car_loading.json
+    - assets/park.json
+    - assets/gpay.json
 

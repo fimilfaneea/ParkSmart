@@ -52,9 +52,9 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title:Text("PARKSMART"),
-          foregroundColor: Colors.black87,
-          backgroundColor: Colors.lightBlue,
+          title:const Text("PARKSMART"),
+          foregroundColor: const Color.fromARGB(221, 255, 255, 255),
+          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           actions: [
             TextButton(
                 onPressed: (){
@@ -68,13 +68,16 @@ class _HomePageState extends State<HomePage> {
                       },false
                   );
                   /*Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));*/
-                }, child: Text('Log Out',style: TextStyle(color: Colors.black),))
+                }, child: const Text('Log Out',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),))
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          child: const Icon(Icons.add),
           onPressed: (){
-            Get.to(Add());
+      
+            Get.to(() => const Add());
           },
         ),
         body: Container(
@@ -96,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blueAccent,
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               boxShadow: [
                                 BoxShadow(
                                     blurRadius: 15,
@@ -126,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Row(
                                   children: [
                                     const Text("Mobile no : ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-                                    Text(data['mobileno'],style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                                    Text(data['mobileno'],style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
                                   ],
                                 ),
                               ),
@@ -136,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Row(
                                   children: [
                                     const Text("Vehicle Number : ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-                                    Text(data['license'],style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                                    Text(data['license'],style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
                                   ],
                                 ),
                               ),
@@ -172,9 +175,9 @@ class _HomePageState extends State<HomePage> {
                                             clipBehavior: Clip.antiAlias,
                                             width: 100,
                                             height: 30,
-                                            decoration: BoxDecoration(
-                                                color: Colors.teal,
-                                                borderRadius: const BorderRadius.only(
+                                            decoration: const BoxDecoration(
+                                                color: Color.fromARGB(255, 255, 255, 255),
+                                                borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(10),
                                                   bottomLeft: Radius.circular(10),
                                                 )
@@ -191,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                                                 date: data['date'],
                                               )));
                                             },
-                                            child: Text("Edit",style: TextStyle(color: Colors.tealAccent,fontSize: 16,fontWeight: FontWeight.bold),)),
+                                            child: Text("Edit",style: TextStyle(color: Colors.tealAccent.withOpacity(0.0),fontSize: 16,fontWeight: FontWeight.bold),)),
                                         InkWell(
                                           onTap: (){
                                             _showMyDialog(
