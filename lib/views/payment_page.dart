@@ -5,6 +5,7 @@ import 'package:parksmart/views/ticket.dart';
 import 'package:pay/pay.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'dart:developer';
+import 'package:parksmart/views/ticket.dart';
 
 import 'package:parksmart/views/payment_successful.dart';
 
@@ -16,6 +17,21 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+
+  double calculateParkingCharge(String duration) {
+    switch (duration) {
+      case '1 Hour':
+        return 20.0;
+      case '2 Hours':
+        return 30.0;
+      case '3 Hours':
+        return 40.0;
+      case '4 Hours':
+        return 50.0;
+      default:
+        return 0.0;
+    }
+  }
   
   final paymentItem = <PaymentItem>[];
 
@@ -55,6 +71,14 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    // final time = args?['time'] as String;
+    final mall = args?['mall'] as String?;
+    final time = args?['time'] as String?;
+    final duration = args?['duration'] as String?;
+    final license = args?['license'] as String?;
+
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -91,21 +115,15 @@ class _PaymentPageState extends State<PaymentPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "HiLite Mall",
+                          mall ?? '',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                         ),
+
                         Text(
-                          'Sat, 24 Jun,2023 | 09:30 PM',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          'Vehicle No : KL07 M3411',
+                          license ?? '',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -155,26 +173,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontSize: 15),
                           ),
                           Text(
-                            "9:30 AM",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Exit Time",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          ),
-                          Text(
-                            "12:30 PM",
+                            time ?? '',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -193,12 +192,12 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontSize: 15),
                           ),
                           Text(
-                            "3 Hrs",
+                            duration ?? '',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
-                          )
+                          ),
                         ],
                       ),
                       Divider(
@@ -215,12 +214,13 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontSize: 15),
                           ),
                           Text(
-                            "₹ 40",
+                            '₹ ${calculateParkingCharge(duration ?? '').toStringAsFixed(0)}',
                             style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          )
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
                         ],
                       ),
                       Divider(
@@ -237,12 +237,13 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontSize: 25),
                           ),
                           Text(
-                            "₹ 40",
+                            '₹ ${calculateParkingCharge(duration ?? '').toStringAsFixed(0)}',
                             style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25),
-                          )
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
                         ],
                       ),
                     ],
