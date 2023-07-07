@@ -8,7 +8,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 
 
 class Add extends StatefulWidget {
-    const Add({
+  const Add({
     Key? key,
     this.id,
     this.name,
@@ -57,7 +57,7 @@ class _AddState extends State<Add> {
   bool seepwd = false;
   bool changebutton = false;
   final _formkey = GlobalKey<FormState>();
-  
+
 
 
 // navigation and animation button code
@@ -129,7 +129,7 @@ class _AddState extends State<Add> {
                         },
                       ),
                       const SizedBox(
-                        height: 10.0,
+                        height: 30.0,
                       ),
                       TextFormField(
                         controller: license,
@@ -151,7 +151,7 @@ class _AddState extends State<Add> {
                       ),
 
                       const SizedBox(
-                        height: 10.0,
+                        height: 30.0,
                       ),
                       TextFormField(
                         controller: number,
@@ -187,39 +187,41 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 1.0),
                         child: DropdownButtonFormField2(
-                          
-                          decoration: 
-                          InputDecoration(
-                            icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.lightGreen,
-                            
-
+                          buttonStyleData: const ButtonStyleData(
+                            height: 60,
+                            padding:
+                            EdgeInsets.only(left: 20, right: 10),
                           ),
+                          iconStyleData: const IconStyleData(
+                            iconSize: 30,
+                          ),
+                          decoration:
+                          InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
                             isDense: true,
                             contentPadding: EdgeInsets.zero,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              
+
                             ),
                           ),
                           isExpanded: true,
                           hint: const Text(
                             'Select The Mall',
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 16),
                           ),
-                          
-                         // iconSize: 30,
-                          //buttonHeight: 60,
-                         // buttonPadding:
-                         // const EdgeInsets.only(left: 20, right: 10),
-                          //dropdownDecoration: BoxDecoration(
-                            //borderRadius: BorderRadius.circular(15),
-                         // ),
+
+
+                          dropdownStyleData: DropdownStyleData(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+
                           items: mallItems
                               .map((item) => DropdownMenuItem<String>(
                             value: item,
@@ -255,7 +257,8 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 2.0),
                         child: TextFormField(
                           readOnly: true,
                           controller: dateofJourney,
@@ -294,8 +297,48 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 1.0),
                         child: DropdownButtonFormField2(
+                          buttonStyleData: const ButtonStyleData(
+                            height: 60,
+                            padding:
+                            EdgeInsets.only(left: 20,right: 10),
+                          ),
+
+                          iconStyleData: const IconStyleData(
+                            iconSize: 30 ,
+                          ),
+                          dropdownStyleData: DropdownStyleData(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+
+                          ),
+
+                          decoration: InputDecoration(
+                            fillColor: Colors.grey.shade100,
+                            filled: true,
+                            isDense: true,
+                            contentPadding: EdgeInsets.zero,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+
+                          isExpanded: true,
+                          hint: const Text(
+                            'Select required duration',
+                            style: TextStyle(fontSize: 16),
+                          ),
+
+                          value: selectedDuration,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedDuration = value.toString();
+                            });
+                          },
+
                           items: durationItems
                               .map((item) => DropdownMenuItem<String>(
                             value: item,
@@ -313,44 +356,6 @@ class _AddState extends State<Add> {
                             }
                             return null;
                           },
-                          value: selectedDuration,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedDuration = value.toString();
-                            });
-                          },
-                          
-                          decoration:
-                         // dropdownDecoration: BoxDecoration(
-                           // borderRadius: BorderRadius.circular(15),
-                          //),
-                           InputDecoration(
-                            
-                            icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.lightGreen,
-
-                          ),
-                            fillColor: Colors.grey.shade100,
-                            filled: true,
-                            isDense: true,
-                            contentPadding: EdgeInsets.zero,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          isExpanded: true,
-                          hint: const Text(
-                            'Select required duration',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          
-                          //iconSize: 30,
-                         // buttonHeight: 60,
-                          //buttonPadding:
-                         // const EdgeInsets.only(left: 20, right: 10),
-                          
-                          
                         ),
                       ),
 
@@ -406,12 +411,25 @@ class _AddState extends State<Add> {
             'duration':selectedDuration,
             'userId': userId,
           }).whenComplete(() {
-            Get.snackbar("Parking reserved", "Successful",
-                snackPosition: SnackPosition.BOTTOM);
-                Navigator.of(context).pushNamed('pay');
+            // Get.snackbar("Parking reserved", "Successful",
+            //     snackPosition: SnackPosition.BOTTOM);
+            Navigator.of(context).pushNamed('pay',  arguments: {
+              'mall': selectedMall,
+              'time': dateofJourney.text,
+              'duration': selectedDuration,
+              'license': license.text,
+
+            });
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) => PaymentPage(selectedDuration: selectedDuration),
+            //   ),
+            // );
+
             //Navigator.of(context).pop();
           });
-        } 
+        }
+
         setState(() {
           changebutton = false;
         });
