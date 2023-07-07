@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'auth_provider.dart';
+
 // creating firebase instance
 /*
 final FirebaseAuth auth = FirebaseAuth.instance;
@@ -37,6 +39,9 @@ Future<void> signup(BuildContext context) async {
 */
 
 class AuthController extends GetxController {
+
+
+
   signUp(String name, String email, String password) async {
     try {
       await FirebaseAuth.instance

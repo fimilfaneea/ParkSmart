@@ -1,8 +1,7 @@
 import 'package:parksmart/models/auth.dart';
 import 'package:flutter/material.dart';
-
+import 'EmailVerificationPage.dart';
 import 'package:get/get.dart';
-
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -29,8 +28,8 @@ class _SignupPageState extends State<SignupPage> {
       });
       await Future.delayed(const Duration(seconds: 1));
       await  authController.signUp(name.text,username.text, password.text);
-      // Navigator.push(
-      //context, MaterialPageRoute(builder: (context) => LoginPage()),);
+      Navigator.push(
+      context, MaterialPageRoute(builder: (context) => EmailVerificationPage()),);
       setState(() {
         changebutton = false;
       });

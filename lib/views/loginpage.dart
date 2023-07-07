@@ -1,4 +1,6 @@
 import 'package:parksmart/models/auth.dart';
+import 'package:parksmart/models/auth_service.dart';
+import 'package:parksmart/models/auth_user.dart';
 import 'package:parksmart/views/forget_password.dart';
 import 'package:parksmart/views/homepage.dart';
 import 'package:parksmart/views/signuppage.dart';
@@ -15,6 +17,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  final user = AuthService.firebase().currentUser;
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   AuthController authController = Get.put(AuthController());
@@ -27,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   loginUser() async {
     SharedPreferences preferences=await SharedPreferences.getInstance();
     preferences.getString('token');
-    if(preferences.getString('token')==null){
+    if(preferences.getString('token')==null && user!.isEmailVerified==true){
       const LoginPage();
     }else{
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>const HomePage()), (route) => false);
