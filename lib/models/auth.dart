@@ -42,9 +42,9 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) async {
-        await FirebaseFirestore.instance
-            .collection('user')
-            .add({"name": name, "email": email, "password": password});
+        //await FirebaseFirestore.instance;
+            //.collection('user')
+            //.add({"name": name, "email": email, "password": password});
         // print("Done");
         Get.snackbar("Sign Up", "Sign Up successfully",
             snackPosition: SnackPosition.BOTTOM);

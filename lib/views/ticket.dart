@@ -192,12 +192,12 @@ class _AddState extends State<Add> {
                           
                           decoration: 
                           InputDecoration(
-                          //   icon: const Icon(
-                          //   Icons.arrow_drop_down,
-                          //   color: Colors.lightGreen,
-                          //
-                          //
-                          // ),
+                            icon: const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.lightGreen,
+                            
+
+                          ),
                             fillColor: Colors.grey.shade100,
                             filled: true,
                             isDense: true,
@@ -213,13 +213,13 @@ class _AddState extends State<Add> {
                             style: TextStyle(fontSize: 14),
                           ),
                           
-                         iconSize: 30,
-                          buttonHeight: 60,
-                         buttonPadding:
-                         const EdgeInsets.only(left: 20, right: 10),
-                          dropdownDecoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                         ),
+                         // iconSize: 30,
+                          //buttonHeight: 60,
+                         // buttonPadding:
+                         // const EdgeInsets.only(left: 20, right: 10),
+                          //dropdownDecoration: BoxDecoration(
+                            //borderRadius: BorderRadius.circular(15),
+                         // ),
                           items: mallItems
                               .map((item) => DropdownMenuItem<String>(
                             value: item,
@@ -319,11 +319,11 @@ class _AddState extends State<Add> {
                               selectedDuration = value.toString();
                             });
                           },
-                          //buttonPadding:
+                          
                           decoration:
                          // dropdownDecoration: BoxDecoration(
-                         //   borderRadius: BorderRadius.circular(15),
-                         //  ),
+                           // borderRadius: BorderRadius.circular(15),
+                          //),
                            InputDecoration(
                             
                             icon: const Icon(
@@ -345,10 +345,10 @@ class _AddState extends State<Add> {
                             style: TextStyle(fontSize: 14),
                           ),
                           
-                          iconSize: 30,
-                         buttonHeight: 60,
-                          buttonPadding:
-                         const EdgeInsets.only(left: 20, right: 10),
+                          //iconSize: 30,
+                         // buttonHeight: 60,
+                          //buttonPadding:
+                         // const EdgeInsets.only(left: 20, right: 10),
                           
                           
                         ),
@@ -406,21 +406,9 @@ class _AddState extends State<Add> {
             'duration':selectedDuration,
             'userId': userId,
           }).whenComplete(() {
-            // Get.snackbar("Parking reserved", "Successful",
-            //     snackPosition: SnackPosition.BOTTOM);
-                Navigator.of(context).pushNamed('pay',  arguments: {
-                  'mall': selectedMall,
-                  'time': dateofJourney.text,
-                  'duration': selectedDuration,
-                  'license': license.text,
-
-                });
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => PaymentPage(selectedDuration: selectedDuration),
-                //   ),
-                // );
-
+            Get.snackbar("Parking reserved", "Successful",
+                snackPosition: SnackPosition.BOTTOM);
+                Navigator.of(context).pushNamed('pay');
             //Navigator.of(context).pop();
           });
         } 
