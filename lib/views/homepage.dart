@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             "         PARKSMART",
             textAlign: TextAlign.right,
             style: TextStyle(
-                fontSize: 34,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 255, 255, 255)),
           ),

@@ -84,7 +84,9 @@ class _PaymentPageState extends State<PaymentPage> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
