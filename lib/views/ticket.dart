@@ -129,7 +129,7 @@ class _AddState extends State<Add> {
                         },
                       ),
                       const SizedBox(
-                        height: 10.0,
+                        height: 30.0,
                       ),
                       TextFormField(
                         controller: license,
@@ -151,7 +151,7 @@ class _AddState extends State<Add> {
                       ),
 
                       const SizedBox(
-                        height: 10.0,
+                        height: 30.0,
                       ),
                       TextFormField(
                         controller: number,
@@ -187,7 +187,8 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 5.0, horizontal: 1.0),
                         child: DropdownButtonFormField2(
                           buttonStyleData: const ButtonStyleData(
                             height: 60,
@@ -197,7 +198,7 @@ class _AddState extends State<Add> {
                           iconStyleData: const IconStyleData(
                             iconSize: 30,
                             ),
-                          decoration: 
+                          decoration:
                           InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
@@ -205,7 +206,7 @@ class _AddState extends State<Add> {
                             contentPadding: EdgeInsets.zero,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              
+
                             ),
                           ),
                           isExpanded: true,
@@ -213,8 +214,8 @@ class _AddState extends State<Add> {
                             'Select The Mall',
                             style: TextStyle(fontSize: 16),
                           ),
-                          
-                         
+
+
                          dropdownStyleData: DropdownStyleData(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
@@ -256,7 +257,8 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 2.0),
                         child: TextFormField(
                           readOnly: true,
                           controller: dateofJourney,
@@ -295,7 +297,8 @@ class _AddState extends State<Add> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 1.0),
                         child: DropdownButtonFormField2(
                           buttonStyleData: const ButtonStyleData(
                             height: 60,
