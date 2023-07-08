@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                   //data: snapshot.data !=null ? snapshot.data.toString() : '',
                   version: QrVersions.auto,
                   padding: const EdgeInsets.all(40.0),
-                  size: 415,
+                  size: 300,
                   foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                   
                 ),
