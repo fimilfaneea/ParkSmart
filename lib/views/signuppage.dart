@@ -1,3 +1,4 @@
+import 'package:lottie/lottie.dart';
 import 'package:parksmart/models/auth.dart';
 import 'package:flutter/material.dart';
 import 'EmailVerificationPage.dart';
@@ -11,25 +12,26 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  bool  changebutton = false;
+  bool changebutton = false;
   bool seepwd = true;
   final _formkey = GlobalKey<FormState>();
-
 
   TextEditingController name = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
-  AuthController authController=Get.put(AuthController());
+  AuthController authController = Get.put(AuthController());
 
-  moveToLogin(BuildContext context)async{
-    if(_formkey.currentState!.validate()) {
+  moveToLogin(BuildContext context) async {
+    if (_formkey.currentState!.validate()) {
       setState(() {
         changebutton = true;
       });
       await Future.delayed(const Duration(seconds: 1));
-      await  authController.signUp(name.text,username.text, password.text);
+      await authController.signUp(name.text, username.text, password.text);
       Navigator.push(
-      context, MaterialPageRoute(builder: (context) => EmailVerificationPage()),);
+        context,
+        MaterialPageRoute(builder: (context) => EmailVerificationPage()),
+      );
       setState(() {
         changebutton = false;
       });
@@ -47,17 +49,26 @@ class _SignupPageState extends State<SignupPage> {
             key: _formkey,
             child: Column(
               children: [
-                Image.asset("assets/Images/logo3.png",fit: BoxFit.cover,),
+                Image.asset(
+                  "assets/Images/logo3.png",
+                  fit: BoxFit.cover,
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
+
                 // --------------- Sign Up ------------------------------
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
-                      Text('SIGN UP',style: TextStyle(fontFamily:'San Francisco', fontSize: 35,fontWeight: FontWeight.bold,color: Colors.white)),
+                      Text('SIGN UP',
+                          style: TextStyle(
+                              fontFamily: 'San Francisco',
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
                     ],
                   ),
                 ),
@@ -66,7 +77,8 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 // -----------------TextFormFiled For Name ,Username and Password------------------------
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 32),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                   child: Column(
                     children: [
                       TextFormField(
@@ -74,19 +86,20 @@ class _SignupPageState extends State<SignupPage> {
                         decoration: InputDecoration(
                             fillColor: Colors.white,
                             filled: true,
-                            border:  OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                            ),
-                            focusedBorder: OutlineInputBorder( // Customize the focused border here
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                color: Colors.black54, // Change the border color here
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              // Customize the focused border here
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Colors
+                                    .black54, // Change the border color here
                               ),
                             ),
                             labelText: 'Name',
-                            hintText: 'Enter your name'
-                        ),
-                        validator: (value){
+                            hintText: 'Enter your name'),
+                        validator: (value) {
                           if (value!.isEmpty) {
                             return "Name cannot be empty.";
                           } else {
@@ -94,7 +107,7 @@ class _SignupPageState extends State<SignupPage> {
                           }
                         },
                       ),
-                      const  SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       TextFormField(
@@ -102,14 +115,12 @@ class _SignupPageState extends State<SignupPage> {
                         decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
-                            border:  OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)
-                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
                             labelText: 'Email',
-                            hintText: 'Enter Your Email'
-                        ),
-                        validator: (value){
-                          if (value!.isEmpty){
+                            hintText: 'Enter Your Email'),
+                        validator: (value) {
+                          if (value!.isEmpty) {
                             return "Email cannot be Empty";
                           }
                           return null;
@@ -125,25 +136,24 @@ class _SignupPageState extends State<SignupPage> {
                             fillColor: Colors.grey.shade100,
                             filled: true,
                             suffixIcon: IconButton(
-                              icon: Icon( seepwd ? Icons.visibility_off : Icons.visibility),
+                              icon: Icon(seepwd
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
                               //icon:seepwd== false ?Icon(Icons.remove_red_eye_outlined ): Icon(Icons.remove_red_eye) ,
-                              onPressed: (){
+                              onPressed: () {
                                 setState(() {
-                                  seepwd=!seepwd;
+                                  seepwd = !seepwd;
                                 });
                               },
                             ),
-                            border:  OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)
-                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
                             labelText: 'Password',
-                            hintText: 'Enter Your Password'
-                        ),
-                        validator: (value){
-                          if (value!.isEmpty){
+                            hintText: 'Enter Your Password'),
+                        validator: (value) {
+                          if (value!.isEmpty) {
                             return "Password cannot be Empty";
-                          }
-                          else if(value.length < 6){
+                          } else if (value.length < 6) {
                             return "Password length should be atleast 6";
                           }
                           return null;
@@ -160,14 +170,23 @@ class _SignupPageState extends State<SignupPage> {
                           height: 50,
                           width: changebutton ? 50 : 150,
                           alignment: Alignment.center,
-                          child: changebutton ? Icon(Icons.done,color: Colors.white,) :Text("Sign Up",style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,),),
+                          child: changebutton
+                              ? Icon(
+                                  Icons.done,
+                                  color: Colors.white,
+                                )
+                              : Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
                           decoration: BoxDecoration(
                               color: Colors.blueAccent,
-                              borderRadius: BorderRadius.circular(changebutton ? 50: 8)
-                          ),
+                              borderRadius:
+                                  BorderRadius.circular(changebutton ? 50 : 8)),
                         ),
                       ),
                     ],

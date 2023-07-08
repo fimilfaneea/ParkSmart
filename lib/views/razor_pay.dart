@@ -26,16 +26,6 @@ class _RazorPayState extends State<RazorPay> {
             PaymentSuccessResponse response));
   }
 
-  var options = {
-    'key': 'rzp_test_fTnbgugypdAT3m',
-    'amount': 40, //in the smallest currency sub-unit.
-    'name': 'Acme Corp.',
-    'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
-    'description': 'Parking Charge',
-    'timeout': 60, // in seconds
-    'prefill': {'contact': '9123456789', 'email': 'gaurav.kumar@example.com'}
-  };
-
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
   }

@@ -41,4 +41,6 @@ flutter:
     - assets/car_loading.json
     - assets/park.json
     - assets/gpay.json
+    - assets/parking.json
+    - assets/logo.json
 

@@ -6,23 +6,24 @@ import 'package:parksmart/models/auth_service.dart';
 
 //import '../models/auth.dart';
 
-
 class EmailVerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Email Verification'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           const Text(
+            const Text(
               'Please verify your email',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
-     const       SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 // Call the verification method
@@ -49,12 +50,13 @@ class EmailVerificationPage extends StatelessWidget {
 
       // Call the email verification method
       await user.reload();
-      
+
       // Check if the email is verified
       if (user.emailVerified) {
         Get.snackbar('Success', 'Email already verified');
       } else {
-        Get.snackbar('Success', 'Email verification link sent. Please check your email.');
+        Get.snackbar('Success',
+            'Email verification link sent. Please check your email.');
       }
     } catch (e) {
       Get.snackbar('Error', 'Failed to verify email: $e');

@@ -17,8 +17,7 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-
-  double calculateParkingCharge(String duration) {
+  static double calculateParkingCharge(String duration) {
     switch (duration) {
       case '1 Hour':
         return 20.0;
@@ -32,7 +31,7 @@ class _PaymentPageState extends State<PaymentPage> {
         return 0.0;
     }
   }
-  
+
   final paymentItem = <PaymentItem>[];
 
   var _razorpay = Razorpay();
@@ -71,13 +70,13 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
     // final time = args?['time'] as String;
     final mall = args?['mall'] as String?;
     final time = args?['time'] as String?;
     final duration = args?['duration'] as String?;
     final license = args?['license'] as String?;
-
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -106,7 +105,7 @@ class _PaymentPageState extends State<PaymentPage> {
           child: Column(
             children: [
               Lottie.asset("assets/park.json"),
-               Card(
+              Card(
                 color: Colors.white,
                 child: SizedBox(
                   width: double.infinity,
@@ -123,7 +122,6 @@ class _PaymentPageState extends State<PaymentPage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                         ),
-
                         Text(
                           license ?? '',
                           style: TextStyle(
@@ -136,7 +134,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                 ),
               ),
-               Card(
+              Card(
                 child: Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Column(
@@ -229,9 +227,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                 ),
               ),
-            
               const SizedBox(height: 10),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ExpansionTile(
@@ -246,7 +242,6 @@ class _PaymentPageState extends State<PaymentPage> {
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 onPressed: () {
-                                
                                   Navigator.of(context).pop();
                                   Navigator.of(context).pop();
                                   // Navigator.of(context).push(MaterialPageRoute(
@@ -276,13 +271,14 @@ class _PaymentPageState extends State<PaymentPage> {
                         onPressed: () {
                           var options = {
                             'key': 'rzp_test_fTnbgugypdAT3m',
-                            'amount':
-                                40000, //in the smallest currency sub-unit.
+                            'amount': calculateParkingCharge(duration ?? '')
+                                .toStringAsFixed(
+                                    0), //in the smallest currency sub-unit.
                             'name': 'Park Smart',
                             'order_id':
                                 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
                             'description': 'Parking charge',
-                            'timeout': 300, // in seconds
+                            'timeout': 60, // in seconds
                             'prefill': {
                               'contact': '9123456789',
                               'email': 'gaurav.kumar@example.com'
