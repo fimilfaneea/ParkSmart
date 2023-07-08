@@ -1,6 +1,7 @@
 import 'package:parksmart/views/loginpage.dart';
 import 'package:parksmart/views/payment_page.dart';
 import 'package:parksmart/views/signuppage.dart';
+import 'package:parksmart/views/ticket.dart';
 import 'package:parksmart/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +16,7 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
        "home": (context) => const HomePage(),
        "pay": (context) => const PaymentPage(),
+       "form": (context) => const Add(),
       },
     );
   }

@@ -112,6 +112,10 @@ class _AddState extends State<Add> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 16.0, horizontal: 32.0),
                     child: Column(children: [
+                      const SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                      ),
                       TextFormField(
                         controller: username,
                         decoration: InputDecoration(
@@ -129,7 +133,7 @@ class _AddState extends State<Add> {
                         },
                       ),
                       const SizedBox(
-                        height: 30.0,
+                        height: 40.0,
                       ),
                       TextFormField(
                         controller: license,
@@ -151,7 +155,7 @@ class _AddState extends State<Add> {
                       ),
 
                       const SizedBox(
-                        height: 30.0,
+                        height: 40.0,
                       ),
                       TextFormField(
                         controller: number,
@@ -175,7 +179,7 @@ class _AddState extends State<Add> {
                         },
                       ),
                       const SizedBox(
-                        height: 10.0,
+                        height: 8.0,
                       ),
 
                       Container(
@@ -359,30 +363,30 @@ class _AddState extends State<Add> {
                         ),
                       ),
 
-                      SizedBox(
-                        height: 10,
+                      const SizedBox(
+                        height: 50,
                       ),
                       //-----------Login Button code---------------
                       InkWell(
-                        onTap: () => Submit(),
+                        onTap: () => submit(),
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 3),
                           width: changebutton ? 50 : 150,
                           height: 50,
                           alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 82, 55, 108),
+                              borderRadius: BorderRadius.circular(
+                                  changebutton ? 50 : 8)),
                           child: changebutton
-                              ? Icon(Icons.done)
+                              ? const Icon(Icons.done)
                               : Text(
                             widget.id == null ? "Pay" : "Update",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18),
                           ),
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              borderRadius: BorderRadius.circular(
-                                  changebutton ? 50 : 8)),
                         ),
                       ),
                     ]),
@@ -394,7 +398,7 @@ class _AddState extends State<Add> {
     );
   }
 
-  Submit() async {
+  submit() async {
     var userId = FirebaseAuth.instance.currentUser!.uid.toString();
     if (_formkey.currentState!.validate()) {
       try {
