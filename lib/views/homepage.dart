@@ -1,7 +1,6 @@
 
 
 import 'package:parksmart/models/auth.dart';
-import 'package:parksmart/views/ticket.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -18,6 +17,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
+
+  // int counter() {
+    
+  // }
 
 
   
@@ -28,6 +32,8 @@ class _HomePageState extends State<HomePage> {
       .orderBy('createdAt',descending: true)
       .limit(1)
       .get();
+      
+      
 
       if(snapshot.docs.isNotEmpty) {
         String latestDocumentId = snapshot.docs[0].id;
@@ -163,10 +169,31 @@ class _HomePageState extends State<HomePage> {
             builder: (context,
                 AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
               if (snapshot.hasData) {
-                if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+                if(snapshot.data!.docs.isEmpty) {
+                  
+                  return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
+                    TextButton(
+                    onPressed: () { 
+                      Navigator.of(context).pushNamed('form');
+                      },
+                   child: const Text('Tap here to book a parking ticket',style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 18,
+                    color: Colors.white54
+                   ),)),
+          
+                  ],
+                );
+                
+   
+                } 
+                var data = snapshot.data!.docs[0];
+                if (snapshot.hasData && snapshot.data!.docs.isNotEmpty && (id == data['userId'])) {
                 getQRData();
                 
-                var data = snapshot.data!.docs[0];
+                //var data = snapshot.data!.docs[0];
                 String details = 'Name: ${data['name']},Vehicle no.: ${data['license']},Mobile: ${data['mobileno']},Mall: ${data['mall']},Start time: ${data['date']},Duration: ${data['duration']}';
                 return Column(
                  mainAxisAlignment: MainAxisAlignment.start,
@@ -238,24 +265,7 @@ class _HomePageState extends State<HomePage> {
 );
            
                   //snapshot.hasData ? isFABEnabled = true :isFABEnabled =false;
-                } else {
-                  return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
-                    TextButton(
-                    onPressed: () { 
-                      Navigator.of(context).pushNamed('form');
-                      },
-                   child: const Text('Tap here to book a parking ticket',style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 18,
-                    color: Colors.white54
-                   ),)),
-          
-                  ],
-                );
-                
-   }} else if (snapshot.hasError) {
+                } } else if (snapshot.hasError) {
                 return const Center(child: Text("No data"));
               }
               return const SizedBox();
