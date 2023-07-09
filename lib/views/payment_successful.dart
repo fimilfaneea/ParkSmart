@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:parksmart/views/homepage.dart';
 
 class PaymentSuccessfull extends StatelessWidget {
   const PaymentSuccessfull({super.key});
 
   @override
   Widget build(BuildContext context) {
-     Scaffold(
+    return Scaffold(
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -17,10 +18,20 @@ class PaymentSuccessfull extends StatelessWidget {
           const Text(
             "Payment Successfull",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 80),
+          Card(
+            color: Colors.blue,
+            child: MaterialButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+              child: const Text("Tap here to get the QR code"),
+            ),
           )
         ],
       )),
     );
-    return const Text('Redirecting to homepage..');
   }
 }

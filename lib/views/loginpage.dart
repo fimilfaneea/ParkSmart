@@ -124,6 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
 
+                  const SizedBox(height: 20),
+
                   TextFormField(
                     controller: password,
                     obscureText: seepwd,

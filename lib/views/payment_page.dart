@@ -242,8 +242,11 @@ class _PaymentPageState extends State<PaymentPage> {
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 onPressed: () {
-                                  Navigator.of(context).pop();
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentSuccessfull()));
+                                  // Navigator.of(context).pop();
+                                  // Navigator.of(context).pop();
                                   // Navigator.of(context).push(MaterialPageRoute(
                                   //     builder: (context) =>
                                   //         const HomePage()));
