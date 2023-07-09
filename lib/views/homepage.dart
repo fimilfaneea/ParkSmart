@@ -121,8 +121,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text(
-            "         PARKSMART",
-            textAlign: TextAlign.right,
+            "PARKSMART",
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -190,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontStyle: FontStyle.italic,
                                           fontSize: 18,
-                                          color: Colors.white54),
+                                          color: Color.fromARGB(255, 255, 255, 255)),
                                     )),
                               ),
                             ),
