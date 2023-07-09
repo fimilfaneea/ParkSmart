@@ -6,6 +6,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String allocatedSpot = "";
   // int counter() {
 
   // }
@@ -81,6 +83,12 @@ class _HomePageState extends State<HomePage> {
 
       data.forEach((key, value) {
         qrData += '$key: ${value.toString()}\n';
+      });
+
+      String allocatedSpot = data['parkingSpot']; // Retrieve the allocated parking spot
+
+      setState(() {
+        this.allocatedSpot = allocatedSpot;
       });
 
       return qrData;
@@ -220,6 +228,14 @@ class _HomePageState extends State<HomePage> {
                                 fontStyle: FontStyle.italic,
                               ),
                             ),
+                            SizedBox(height: 16),
+                            Text(
+                              'Allocated Spot: ${data['parkingSpot']}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
                             QrImage(
                               data: details,
                               //data: snapshot.data !=null ? snapshot.data.toString() : '',
@@ -229,6 +245,8 @@ class _HomePageState extends State<HomePage> {
                               foregroundColor:
                                   const Color.fromARGB(255, 255, 255, 255),
                             ),
+
+
                             ElevatedButton(
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateColor.resolveWith(
@@ -253,8 +271,8 @@ class _HomePageState extends State<HomePage> {
                                         .delete()
                                         .whenComplete(() {
                                       Navigator.of(context).pop();
-                                      Get.snackbar("Delete Ticket book",
-                                          "Delete Ticket book successfully",
+                                      Get.snackbar("Reservation Cancelled",
+                                          "Parking spot reservation cancelled successfully",
                                           snackPosition: SnackPosition.BOTTOM);
                                     });
                                     setState(() {

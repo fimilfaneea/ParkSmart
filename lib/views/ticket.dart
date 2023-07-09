@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-
+import 'dart:math';
 
 
 class Add extends StatefulWidget {
@@ -406,6 +406,8 @@ class _AddState extends State<Add> {
           changebutton = true;
         });
         if (widget.id == null) {
+          // Generate a random parking spot
+          String parkingSpot = getRandomParkingSpot();
           await FirebaseFirestore.instance.collection("Ticket").add({
             'name': username.text,
             'license': license.text,
@@ -413,6 +415,7 @@ class _AddState extends State<Add> {
             'mall':selectedMall,
             'date': dateofJourney.text,
             'duration':selectedDuration,
+            'parkingSpot': parkingSpot,
             'userId': userId,
           }).whenComplete(() {
             // Get.snackbar("Parking reserved", "Successful",
@@ -422,6 +425,7 @@ class _AddState extends State<Add> {
               'time': dateofJourney.text,
               'duration': selectedDuration,
               'license': license.text,
+              'parkingSpot': parkingSpot,
 
             });
             // Navigator.of(context).push(
@@ -437,7 +441,7 @@ class _AddState extends State<Add> {
         setState(() {
           changebutton = false;
         });
-      } catch (e) {
+      }catch (e) {
         print(e);
         setState(() {
           changebutton = false;
@@ -447,4 +451,21 @@ class _AddState extends State<Add> {
       }
     }
   }
+}
+
+
+
+String getRandomParkingSpot() {
+  List<String> availableParkingSpots = [
+    'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'E1', 'E2', 'F1', 'F2', 'G1', 'G2', 'H1', 'H2', 'I1', 'I2', 'J1', 'J2',
+    'K1', 'K2', 'L1', 'L2', 'M1', 'M2', 'N1', 'N2', 'O1', 'O2', 'P1', 'P2', 'Q1', 'Q2', 'R1', 'R2', 'S1', 'S2', 'T1', 'T2',
+    'U1', 'U2', 'V1', 'V2', 'W1', 'W2', 'X1', 'X2', 'Y1', 'Y2', 'Z1', 'Z2'
+  ];
+
+  final random = Random();
+  int randomIndex = random.nextInt(availableParkingSpots.length);
+  String spot = availableParkingSpots[randomIndex];
+  availableParkingSpots.removeAt(randomIndex);
+
+  return spot;
 }
