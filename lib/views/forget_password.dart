@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:parksmart/models/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../models/auth_provider.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -17,18 +20,28 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   TextEditingController email = TextEditingController();
   //AuthController authController=Get.put(AuthController());
 
+
+
+
   //Function to move to login page
   moveTologinpage(BuildContext context)async{
     if(_formkey.currentState!.validate()){
       setState(() {
         changebutton = true;
       });
-      await Future.delayed(Duration(seconds: 2));
-     // await authController.forgotPassword(email.text);
+      await Future.delayed(Duration(seconds: 6));
+      Navigator.of(context).pop();
       setState(() {
         changebutton = false;
       });
     }
+  }
+
+  forgotPass(String email) async{
+    AuthController authController = AuthController();
+    await authController.forgotPassword(email);
+    Get.snackbar('Forgot password', 'Password reset link has been sent, please check your email',
+      backgroundColor: Colors.white,);
   }
 
 
@@ -83,7 +96,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         height: 20.0,
                       ),
                       InkWell(
-                        onTap: ()=>moveTologinpage(context),
+                        onTap: () {
+                          String emailStr = email.toString();
+                          forgotPass(emailStr);
+                          moveTologinpage(context);
+                          },
                         child: AnimatedContainer(duration: Duration(seconds: 1),
                           height: 50,
                           width: changebutton?50:150,

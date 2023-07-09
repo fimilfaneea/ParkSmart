@@ -106,8 +106,8 @@ class AuthController extends GetxController {
       update();
     } catch (e) {
       print(e);
-      Get.snackbar("Something went wrong", e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      //Get.snackbar("Something went wrong", e.toString(),
+          //snackPosition: SnackPosition.BOTTOM,);
     }
   }
 

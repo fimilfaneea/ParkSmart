@@ -8,7 +8,8 @@ class PaymentSuccessfull extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body:
+      Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -16,7 +17,8 @@ class PaymentSuccessfull extends StatelessWidget {
           Lottie.asset("assets/car_loading.json"),
           const SizedBox(height: 10),
           const Text(
-            "Payment Successfull",
+            "Payment Successful",
+
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 80),

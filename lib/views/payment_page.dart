@@ -5,8 +5,6 @@ import 'package:parksmart/views/ticket.dart';
 import 'package:pay/pay.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'dart:developer';
-import 'package:parksmart/views/ticket.dart';
-
 import 'package:parksmart/views/payment_successful.dart';
 
 class PaymentPage extends StatefulWidget {

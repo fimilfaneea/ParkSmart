@@ -79,13 +79,14 @@ class _LoginPageState extends State<LoginPage> {
                   Image.asset(
                     "assets/Images/logo3.png",
                     width: 200,
+
                     opacity: const AlwaysStoppedAnimation(.8),
                     // color: Color.fromARGB(31, 62, 36, 128),
                     fit: BoxFit.cover,
                   ),
 
                   Container(
-                      height: 400, child: Lottie.asset("assets/logo.json")),
+                      height: 300, child: Lottie.asset("assets/logo.json")),
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -178,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                   InkWell(
                     onTap: () => moveToHome(context),
                     child: AnimatedContainer(
-                      duration: Duration(seconds: 1),
+                      duration: Duration(seconds: 3),
                       width: changebutton ? 50 : 150,
                       height: 50,
                       alignment: Alignment.center,

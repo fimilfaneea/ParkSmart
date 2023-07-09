@@ -44,7 +44,8 @@ class EmailVerificationPage extends StatelessWidget {
       AuthService.firebase().sendEmailVerification();
       // Check if the user .is null
       if (user == null) {
-        Get.snackbar('Error', 'User not found');
+        Get.snackbar('Error', 'User not found',
+          backgroundColor: Colors.white,);
         return;
       }
 
@@ -53,13 +54,13 @@ class EmailVerificationPage extends StatelessWidget {
 
       // Check if the email is verified
       if (user.emailVerified) {
-        Get.snackbar('Success', 'Email already verified');
+        Get.snackbar('Success', 'Email already verified',backgroundColor: Colors.white,);
       } else {
         Get.snackbar('Success',
-            'Email verification link sent. Please check your email.');
+            'Email verification link sent. Please check your email.',backgroundColor: Colors.white,);
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to verify email: $e');
+      Get.snackbar('Error', 'Failed to verify email: $e',backgroundColor: Colors.white,);
     }
   }
 }
