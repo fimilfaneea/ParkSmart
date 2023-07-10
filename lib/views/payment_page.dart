@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:parksmart/views/homepage.dart';
-import 'package:parksmart/views/ticket.dart';
 import 'package:pay/pay.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'dart:developer';
@@ -31,6 +29,13 @@ class _PaymentPageState extends State<PaymentPage> {
   }
 
   final paymentItem = <PaymentItem>[];
+
+
+
+
+
+
+
 
   var _razorpay = Razorpay();
   @override
@@ -243,11 +248,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
                                           const PaymentSuccessfull()));
-                                  // Navigator.of(context).pop();
-                                  // Navigator.of(context).pop();
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         const HomePage()));
+                        
                                 },
                                 icon: const Icon(Icons.done)),
                             border: const OutlineInputBorder(),

@@ -85,8 +85,7 @@ class _HomePageState extends State<HomePage> {
         qrData += '$key: ${value.toString()}\n';
       });
 
-      String allocatedSpot = data['parkingSpot'];
-       // Retrieve the allocated parking spot
+      String allocatedSpot = data['parkingSpot']; // Retrieve the allocated parking spot
 
       setState(() {
         this.allocatedSpot = allocatedSpot;
@@ -233,15 +232,6 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             const SizedBox(height: 16),
-                            
-                            Text(
-                              'Vehicle No: ${data['license']}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-
                             Text(
                               'Allocated Spot: ${data['parkingSpot']}',
                               style: const TextStyle(

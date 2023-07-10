@@ -428,13 +428,7 @@ class _AddState extends State<Add> {
               'parkingSpot': parkingSpot,
 
             });
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) => PaymentPage(selectedDuration: selectedDuration),
-            //   ),
-            // );
-
-            //Navigator.of(context).pop();
+          
           });
         }
 
