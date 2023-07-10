@@ -152,13 +152,23 @@ class _HomePageState extends State<HomePage> {
                     'Log Out',
                     style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                   )),
-            )
+            ),
           ],
+          
           // bottom: PreferredSize(
           //     preferredSize: const Size.fromHeight(300),
           //     child: Lottie.asset("assets/images/parking.json")),
         ),
-        body: Column(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          child: const Icon(Icons.add),
+          onPressed: (){
+            Navigator.of(context).pushNamed('form');
+          },
+        ),
+        body: 
+        Column(
           children: [
             Expanded(
               flex: 2,
@@ -191,28 +201,7 @@ class _HomePageState extends State<HomePage> {
                             'Name: ${data['name']},Vehicle no.: ${data['license']},Mobile: ${data['mobileno']},Mall: ${data['mall']},Start time: ${data['date']},Duration: ${data['duration']}';
                             getQRData(i);
                       return (id!=data['userId'])?
-                         Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Card(
-                              color: Colors.teal,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pushNamed('form');
-                                    },
-                                    child: const Text(
-                                      'Tap here to book a parking ticket',
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          fontSize: 18,
-                                          color: Color.fromARGB(255, 255, 255, 255)),
-                                    )),
-                              ),
-                            ),
-                          ],
-                        )
+                         const Center()
                         
                         :
                         
@@ -236,6 +225,14 @@ class _HomePageState extends State<HomePage> {
                             
                             Text(
                               'Vehicle No: ${data['license']}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+
+                            Text(
+                              'Entry time: ${data['date']}',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
